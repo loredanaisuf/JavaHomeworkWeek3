@@ -27,6 +27,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        Library library=new Library();
         List<Book> books = new ArrayList<Book>();
         int optiune = 0;
         String scanName;
@@ -48,7 +49,7 @@ public class Main {
                     scanName=readTheTitle();
                     scanNumberOfPages=readTheNumberOfPages();
                     Book book = new Book(scanName, scanNumberOfPages);
-                    book.add(books, book);
+                    library.add(book);
                     break;
                 }
 
@@ -58,7 +59,7 @@ public class Main {
                     System.out.println("Enter the type of the novel:");
                     scanType=readTheSpecific();
                     Novel novel=new Novel(scanName,scanNumberOfPages,scanType);
-                    novel.add(books,novel);
+                    library.add(novel);
                     break;
                 }
 
@@ -68,16 +69,17 @@ public class Main {
                     System.out.println("Enter the paper quality of the album:");
                     scanPaperQuality=readTheSpecific();
                     Album album=new Album(scanName,scanNumberOfPages,scanPaperQuality);
-                    album.add(books, album);
+                    library.add(album);
                     break;
                 }
 
                 case(4):{
                     scanName=readTheTitle();
                     boolean isInTheList=false;
+                    books=library.getListOfBooks();
                     for(Book b:books) {
                         if (b.getName().equals(scanName)) {
-                            b.delete(books,b);
+                            library.delete(b);
                             isInTheList=true;
                             break;
                         }
@@ -88,6 +90,7 @@ public class Main {
                 }
 
                 case (5): {
+                    books=library.getListOfBooks();
                     if(books.isEmpty())
                         System.out.println("The list is empty!");
                     for (Book b : books)

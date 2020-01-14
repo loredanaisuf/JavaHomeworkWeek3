@@ -14,22 +14,6 @@ public class Book {
         return name;
     }
 
-    /**
-     * This is the method where I will add books in the list
-     * @param book is the book I will add
-     */
-    public void add(List<Book> books,Book book){
-        books.add(book);
-    }
-
-    /**
-     * This is the method where I will remove books in the list
-     * @param book is the book I will remove
-     */
-    public void delete(List<Book> books,Book book){
-        books.remove(book);
-    }
-
 
     @Override
     public String toString() {
